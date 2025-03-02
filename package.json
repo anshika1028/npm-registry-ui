@@ -7,8 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint",
-    "serve:ssr:npm-registry-ui": "node dist/npm-registry-ui/server/server.mjs"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -20,9 +19,7 @@
     "@angular/forms": "^19.2.0",
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
-    "@angular/platform-server": "^19.2.0",
     "@angular/router": "^19.2.0",
-    "@angular/ssr": "^19.2.0",
     "tailwindcss": "^3.0.0",
     "postcss": "^8.0.0",
     "autoprefixer": "^10.0.0",
