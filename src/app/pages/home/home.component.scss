@@ -1,0 +1,26 @@
+.search-header {
+  position: sticky;
+  top: 40px;
+  padding-top: 20px;
+  overflow: hidden;
+  background-color: #fff;
+  z-index: 10;
+}
+.introduction {
+  width: 600px;
+  margin: 0 auto;
+  padding: 50px 0;
+  p {
+    margin: 20px 0;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 4px 13px -3px rgba(0, 0, 0, 0.10196);
+  border-bottom: 1px solid #d2d2d2;
+}
+.npm {
+  &--list {
+    padding: 0px 50px;
+  }
+}

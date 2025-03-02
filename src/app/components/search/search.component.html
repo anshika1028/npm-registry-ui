@@ -1,0 +1,22 @@
+<section class="search-container">
+  <h5>NPM</h5>
+  <div class="search-input">
+    <cds-search
+      [placeholder]="'Search packages'"
+      [autocomplete]="'on'"
+      [size]="'lg'"
+      [value]="searchTerm"
+      (valueChange)="onSearch($event)"
+      [fluid]="false"
+      [expandable]="false"
+    ></cds-search>
+
+    <div class="search-hint">
+      {{
+        searchTerm.length <= 2
+          ? "Type minimum 3 chars to begin search"
+          : "&nbsp;"
+      }}
+    </div>
+  </div>
+</section>

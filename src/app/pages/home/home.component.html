@@ -1,0 +1,41 @@
+<section>
+  <div class="search-header">
+    <app-search (search)="onSearch($event)" class="search-box"></app-search>
+    <hr class="box-shadow" />
+  </div>
+  <div class="my-5 mx-10">
+    @if (loading || lastSearchTerm.length > 2) {
+      <div class="npm--list">
+        <app-package-list
+          [packageEntries]="packageEntries"
+          [totalCount]="pagination.totalDataLength"
+          [loading]="loading"
+        ></app-package-list>
+
+        @if (pagination.totalDataLength > 0) {
+          <cds-pagination
+            [model]="pagination"
+            (selectPage)="selectPage($event)"
+          ></cds-pagination>
+        }
+      </div>
+    }
+    @if (!loading && lastSearchTerm.length <= 2) {
+      <div class="introduction">
+        <h1>NPM Packages</h1>
+        <h2>
+          Bring the best of open source to you, your team, and your company
+        </h2>
+        <p>
+          Relied upon by more than 17 million developers worldwide, npm is
+          committed to making JavaScript development elegant, productive, and
+          safe. The free npm Registry has become the center of JavaScript code
+          sharing, and with more than two million packages, the largest software
+          registry in the world. Our other tools and services take the Registry,
+          and the work you do around it, to the next level.
+        </p>
+        <a href="https://www.npmjs.com/" target="_blank">Learn more</a>
+      </div>
+    }
+  </div>
+</section>

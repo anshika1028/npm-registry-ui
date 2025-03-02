@@ -1,0 +1,105 @@
+<section class="my-5 mx-10 space-y-2">
+  <h3 class="font-semibold text-xl">
+    {{ packageDetails?.name }}
+  </h3>
+  <div class="flex items-center gap-2">
+    <div>{{ packageDetails?.["dist-tags"]?.latest ?? "-" }}</div>
+    &bull;
+    <div>{{ packageDetails?.license ?? "-" }}</div>
+    &bull;
+    <div>
+      Published
+      {{
+        fromNow(
+          packageDetails?.time?.[
+            packageDetails?.["dist-tags"]?.latest ?? "modified"
+          ]
+        )
+      }}
+    </div>
+  </div>
+  <div>{{ packageDetails?.description ?? "-" }}</div>
+  <div>
+    <div class="flex mt-6 gap-8 justify-between items-stretch w-full">
+      <cds-tabs
+        type="line"
+        [isNavigation]="true"
+        [skeleton]="loading"
+        class="flex-1"
+      >
+        <cds-tab heading="ReadMe">
+          <div class="my-2">
+          @if (packageDetails?.readme) {
+            <markdown> {{ packageDetails?.readme }}</markdown>
+          } @else {
+            <div class="text-center">No Readme content available</div>
+          }
+          </div>
+        </cds-tab>
+        <cds-tab heading="Versions">
+          <h6 class="my-2">Current Tags</h6>
+          
+        <div>Existing version list goes here...</div>
+        </cds-tab>
+      </cds-tabs>
+      <div
+        class="border-0 border-solid border-gray-600 border-l-1 borde pl-4 w-[300px]"
+      >
+        <div class="space-y-4">
+          <div>
+            <div class="font-semibold text-gray-700">Home Page</div>
+            <div>
+              <a cdsLink [href]="packageDetails?.homepage" target="_blank">{{
+                packageDetails?.homepage ?? "-"
+              }}</a>
+            </div>
+          </div>
+          <div>
+            <div class="font-semibold text-gray-700">Repository</div>
+            <div>
+              <a
+                cdsLink
+                [href]="packageDetails?.repository?.url"
+                target="_blank"
+                >{{ packageDetails?.repository?.url ?? "-" }}</a
+              >
+            </div>
+          </div>
+          <div>
+            <div class="font-semibold text-gray-700">Bugs</div>
+            <div>
+              <a cdsLink [href]="packageDetails?.bugs?.url" target="_blank">{{
+                packageDetails?.bugs?.url ?? "-"
+              }}</a>
+            </div>
+          </div>
+          <div>
+            <div class="font-semibold text-gray-700">Author</div>
+            <div>{{ packageDetails?.author ?? "-" }}</div>
+          </div>
+          <div>
+            <div class="font-semibold text-gray-700">Maintainers</div>
+
+            <div class="gap-4">
+              @for (item of packageDetails?.maintainers; track $index) {
+                <span>{{ item.name }} </span>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+author: {
+  name: string;
+};
+
+
+keywords: string[];
+versions: any;
+
+maintainers: { email: string; name: string }[];
+-->

@@ -1,0 +1,64 @@
+<section class="results">
+  <div class="results-count font-semibold">
+    {{ loading? '': `${totalCount} packages found`}}
+  </div>
+  <cds-structured-list class="results-list" [skeleton]="loading">
+    @for (packageEntry of packageEntries; track $index) {
+      <cds-list-row>
+        <cds-list-column>
+          <div>
+            <h5>
+              <a
+                class="font-semibold"
+                cdsLink
+                [href]="'packages/' + packageEntry.package.name"
+                >{{ packageEntry.package.name }}</a
+              >
+            </h5>
+            <div>{{ packageEntry.package.description }}</div>
+          </div>
+          <div>
+            @for (keyword of packageEntry.package.keywords; track $index) {
+              @if ($index < 5) {
+                <cds-tag status="info" class="npm-search--tag">
+                  {{ keyword }}
+                </cds-tag>
+              }
+            }
+            <div>
+              <a
+                class="font-semibold"
+                cdsLink
+                [href]="
+                  'https://www.npmjs.com/~' +
+                  packageEntry.package.publisher.username
+                "
+                target="_blank"
+                >{{ packageEntry.package.publisher.username }}
+              </a>
+            </div>
+          </div>
+        </cds-list-column>
+
+        <cds-list-column>
+          <span class="npm--list--column__last">
+            <div>v{{ packageEntry.package.version }}</div>
+            <div class="flex items-center gap-2">
+              <!-- <Icon cdsIcon="timer"/> -->
+              Updated {{ fromNow(packageEntry.updated) }}
+            </div>
+          </span>
+        </cds-list-column>
+
+        <cds-list-column>
+          <span class="npm--list--column__last">
+            <div class="flex items-center gap-2">
+              <Icon cdsIcon="download" />
+              <span>{{ packageEntry.downloads.monthly.toLocaleString() }}</span>
+            </div>
+          </span>
+        </cds-list-column>
+      </cds-list-row>
+    }
+  </cds-structured-list>
+</section>
