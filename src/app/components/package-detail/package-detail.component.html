@@ -29,17 +29,17 @@
       >
         <cds-tab heading="ReadMe">
           <div class="my-2">
-          @if (packageDetails?.readme) {
-            <markdown> {{ packageDetails?.readme }}</markdown>
-          } @else {
-            <div class="text-center">No Readme content available</div>
-          }
+            @if (packageDetails?.readme) {
+              <markdown> {{ packageDetails?.readme }}</markdown>
+            } @else {
+              <div class="text-center">No Readme content available</div>
+            }
           </div>
         </cds-tab>
         <cds-tab heading="Versions">
           <h6 class="my-2">Current Tags</h6>
-          
-        <div>Existing version list goes here...</div>
+
+          <div>Existing version list goes here...</div>
         </cds-tab>
       </cds-tabs>
       <div

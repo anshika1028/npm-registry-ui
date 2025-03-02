@@ -15,7 +15,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* Import css variables in root */
 html {
   @include styles.theme(styles.$white);
@@ -39,7 +38,6 @@ html {
     border-radius: 5px !important;
   }
 }
-
 
 a.cds--link {
   color: #2e3438;

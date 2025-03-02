@@ -13,7 +13,9 @@ describe('HomeComponent', () => {
   let npmRegistryService: jasmine.SpyObj<NpmRegistryService>;
 
   beforeEach(async () => {
-    const npmRegistryServiceMock = jasmine.createSpyObj('NpmRegistryService', ['searchPackages']);
+    const npmRegistryServiceMock = jasmine.createSpyObj('NpmRegistryService', [
+      'searchPackages',
+    ]);
 
     await TestBed.configureTestingModule({
       imports: [
@@ -30,7 +32,9 @@ describe('HomeComponent', () => {
 
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    npmRegistryService = TestBed.inject(NpmRegistryService) as jasmine.SpyObj<NpmRegistryService>;
+    npmRegistryService = TestBed.inject(
+      NpmRegistryService,
+    ) as jasmine.SpyObj<NpmRegistryService>;
   });
 
   it('should create the home component', () => {
