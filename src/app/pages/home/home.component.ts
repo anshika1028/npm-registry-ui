@@ -8,7 +8,6 @@ import { SearchComponent } from '../../components/search/search.component';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [
     SearchComponent,
     PackageListComponent,

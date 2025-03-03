@@ -5,12 +5,11 @@ import { MarkdownComponent } from 'ngx-markdown';
 import { NpmRegistryService } from '../../services/npm-registry.service';
 import { PackageDetails } from '../../models/package.model';
 import { TabsModule } from 'carbon-components-angular';
-import dayjs from 'dayjs';
+import { getTimeAgoString } from '../../misc/utils';
 import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-package-detail',
-  standalone: true,
   imports: [MarkdownComponent, TabsModule],
   templateUrl: './package-detail.component.html',
   styleUrls: ['./package-detail.component.scss'],
@@ -56,10 +55,6 @@ export class PackageDetailComponent implements OnInit {
   }
 
   fromNow(date?: string) {
-    if (date) {
-      return dayjs(date).fromNow();
-    } else {
-      return '-';
-    }
+    return getTimeAgoString(date)  
   }
 }

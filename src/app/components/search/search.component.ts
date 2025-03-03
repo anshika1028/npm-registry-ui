@@ -5,7 +5,6 @@ import { SearchModule } from 'carbon-components-angular';
 
 @Component({
   selector: 'app-search',
-  standalone: true,
   imports: [FormsModule, SearchModule],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],

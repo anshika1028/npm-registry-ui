@@ -34,9 +34,6 @@ module.exports = {
           dark: "#21262B",
           light: "#F9FBF9",
         },
-        // New set of colors that overwrite tailwind DEFAULT
-        // Deprecate spark-{color} usage
-        // E.g. bg-spark-green --> bg-green
         green: {
           DEFAULT: "#21C08E",
           100: "#D3F2E8",
