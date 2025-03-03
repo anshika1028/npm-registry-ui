@@ -138,7 +138,6 @@ src/
 - **Advanced Search Filters:** Add filters for author, keywords, and other criteria.
 - **Sorting:** Allow users to sort search results by different criteria.
 - **Error Handling:** Implement more robust error handling and user feedback.
-- **Markdown Parsing:** Use a markdown parser to display the README content correctly.
 - **Unit and E2E Testing:** Add more comprehensive tests to cover all aspects of the application.
 - **Accessibility:** Improve accessibility by following ARIA guidelines.
 - **Deployment:** Add configurations for deploying the application to a production environment.
