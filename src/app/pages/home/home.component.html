@@ -1,4 +1,4 @@
-<section>
+<section class="search">
   <div class="search-header">
     <app-search (search)="onSearch($event)" class="search-box"></app-search>
     <hr class="box-shadow" />
@@ -21,7 +21,8 @@
       </div>
     }
     @if (!loading && lastSearchTerm.length <= 2) {
-      <div class="introduction">
+      <div class="search-result">
+      <div class="search-introduction">
         <h1>NPM Packages</h1>
         <h2>
           Bring the best of open source to you, your team, and your company
@@ -34,7 +35,8 @@
           registry in the world. Our other tools and services take the Registry,
           and the work you do around it, to the next level.
         </p>
-        <a href="https://www.npmjs.com/" target="_blank">Learn more</a>
+        <a href="https://www.npmjs.com/" target="_blank" cdsLink>Learn more...</a>
+      </div>
       </div>
     }
   </div>

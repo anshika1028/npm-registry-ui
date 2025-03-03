@@ -6,12 +6,26 @@
   background-color: #fff;
   z-index: 10;
 }
-.introduction {
+.search-result{
+
+  background: linear-gradient(90deg, rgb(60 60 72) 0%, rgb(40 33 100) 9%, rgb(78 76 84) 100%);
+}
+.search-introduction {
+  color: white;
+  text-align: center;
   width: 600px;
   margin: 0 auto;
   padding: 50px 0;
   p {
     margin: 20px 0;
+  }
+  h1{
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  h2{
+    font-weight: 700;
   }
 }
 

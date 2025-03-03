@@ -6,9 +6,15 @@
   .search-input {
     width: 100%;
 
-    .search-hint {
-      font-size: 10px;
-      margin-top: 4px;
-    }
+  
   }
+  .search-npm{
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+.search-hint {
+  font-size: 10px;
+  margin-top: 4px;
+  margin-left: 85px;
 }

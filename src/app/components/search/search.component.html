@@ -1,16 +1,18 @@
-<section class="search-container">
-  <h5>NPM</h5>
-  <div class="search-input">
-    <cds-search
-      [placeholder]="'Search packages'"
-      [autocomplete]="'on'"
-      [size]="'lg'"
-      [value]="searchTerm"
-      (valueChange)="onSearch($event)"
-      [fluid]="false"
-      [expandable]="false"
-    ></cds-search>
-
+<section >
+  <div class="search-container">
+    <h5 class="search-npm">NPM</h5>
+    <div class="search-input">
+      <cds-search
+        [placeholder]="'Search packages'"
+        [autocomplete]="'on'"
+        [size]="'lg'"
+        [value]="searchTerm"
+        (valueChange)="onSearch($event)"
+        [fluid]="false"
+        [expandable]="false"
+      ></cds-search>
+      </div>
+  </div>
     <div class="search-hint">
       {{
         searchTerm.length <= 2
@@ -18,5 +20,5 @@
           : "&nbsp;"
       }}
     </div>
-  </div>
+
 </section>

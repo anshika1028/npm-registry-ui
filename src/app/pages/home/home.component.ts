@@ -1,5 +1,5 @@
 import { PackageEntry, SearchResult } from '../../models/package.model';
-import { PaginationModule, ThemeModule } from 'carbon-components-angular';
+import { LinkModule, PaginationModule, ThemeModule } from 'carbon-components-angular';
 
 import { Component } from '@angular/core';
 import { NpmRegistryService } from '../../services/npm-registry.service';
@@ -13,6 +13,7 @@ import { SearchComponent } from '../../components/search/search.component';
     PackageListComponent,
     ThemeModule,
     PaginationModule,
+    LinkModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -29,7 +30,10 @@ export class HomeComponent {
   lastSearchErrorCallback = (error: string) => alert(error);
 
   constructor(private npmRegistryService: NpmRegistryService) {}
-
+  ngOnInit(): void {
+    console.log('abc')
+    
+  }
   onSearch(event: { term: string; errorCallback: (error: string) => void }) {
     this.pagination.currentPage = 1;
     this.searchPackages(event.term, event.errorCallback);
