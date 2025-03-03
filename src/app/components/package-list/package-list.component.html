@@ -1,5 +1,5 @@
-<section class="results">
-  <div class="results-count font-semibold">
+<section class="my-4 space-y-4">
+  <div class="font-semibold">
     {{ loading? '': `${totalCount} packages found`}}
   </div>
   <cds-structured-list class="results-list" [skeleton]="loading">
@@ -9,7 +9,7 @@
           <div>
             <h5>
               <a
-                class="font-semibold"
+                class="font-semibold text-xl"
                 cdsLink
                 [href]="'packages/' + packageEntry.package.name"
                 >{{ packageEntry.package.name }}</a
@@ -20,14 +20,15 @@
           <div>
             @for (keyword of packageEntry.package.keywords; track $index) {
               @if ($index < 5) {
-                <cds-tag status="info" class="npm-search--tag">
+                <cds-tag status="info" class="rounded first:ml-0">
                   {{ keyword }}
                 </cds-tag>
               }
             }
             <div>
+              <span class="text-sm pr-1">Publisher:</span>
               <a
-                class="font-semibold"
+                class="font-semibold mt-4"
                 cdsLink
                 [href]="
                   'https://www.npmjs.com/~' +
@@ -41,19 +42,17 @@
         </cds-list-column>
 
         <cds-list-column>
-          <span class="npm--list--column__last">
-            <div>v{{ packageEntry.package.version }}</div>
+          <span class="">
+            <div>{{ packageEntry.package.version }}</div>
             <div class="flex items-center gap-2">
-              <!-- <Icon cdsIcon="timer"/> -->
               Updated {{ fromNow(packageEntry.updated) }}
             </div>
           </span>
         </cds-list-column>
 
         <cds-list-column>
-          <span class="npm--list--column__last">
+          <span class="">
             <div class="flex items-center gap-2">
-              <Icon cdsIcon="download" />
               <span>{{ packageEntry.downloads.monthly.toLocaleString() }}</span>
             </div>
           </span>
