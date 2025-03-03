@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MarkdownComponent } from 'ngx-markdown';
 import { NpmRegistryService } from '../../services/npm-registry.service';
-import { PackageDetails } from '../../models/package.model';
+import { PackageDetails } from '../../models/packageDetails.model';
 import { LinkModule, SkeletonModule, TabsModule } from 'carbon-components-angular';
 import { getTimeAgoString } from '../../misc/utils';
 import { switchMap } from 'rxjs';
