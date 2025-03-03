@@ -29,6 +29,9 @@ export class PackageDetailComponent implements OnInit {
     this.getPackageDetails();
   }
 
+   /**
+   * Fetches package details based on the route parameters.
+   */
   getPackageDetails() {
     this.loading = true;
     this.route.paramMap
@@ -58,6 +61,12 @@ export class PackageDetailComponent implements OnInit {
       });
   }
 
+   /**
+   * Returns a human-readable string representing the time elapsed since the given date.
+   *
+   * @param date The date string to calculate the time elapsed from.
+   * @returns A string representing the time elapsed (e.g., "2 hours ago").
+   */
   fromNow(date?: string) {
     return getTimeAgoString(date);
   }

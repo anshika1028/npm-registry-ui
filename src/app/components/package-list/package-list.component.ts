@@ -25,6 +25,12 @@ export class PackageListComponent {
     errorCallback: (error: string) => void;
   }>();
 
+  /**
+   * Returns a human-readable string representing the time elapsed since the given date.
+   *
+   * @param date The date string to calculate the time elapsed from.
+   * @returns A string representing the time elapsed (e.g., "2 hours ago").
+   */
   fromNow(date: string) {
     return getTimeAgoString(date);
   }

@@ -16,6 +16,11 @@ export class SearchComponent {
   }>();
   searchTerm = '';
 
+  /**
+ * Handles the search input and emits a search event.
+ *
+ * @param val The search term entered by the user.
+ */
   onSearch(val: string) {
     this.searchTerm = val;
     this.search.emit({
