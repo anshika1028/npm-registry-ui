@@ -10,11 +10,11 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'search',
+        redirectTo: 'home',
         pathMatch: 'full',
       },
       {
-        path: 'search',
+        path: 'home',
         component: HomeComponent,
       },
       {

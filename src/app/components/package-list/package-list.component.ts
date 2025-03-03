@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   IconModule,
   LinkModule,
+  SkeletonModule,
   StructuredListModule,
   TagModule,
 } from 'carbon-components-angular';
@@ -11,7 +12,7 @@ import { getTimeAgoString } from '../../misc/utils';
 
 @Component({
   selector: 'app-package-list',
-  imports: [StructuredListModule, TagModule, IconModule, LinkModule],
+  imports: [StructuredListModule, TagModule, IconModule, LinkModule, SkeletonModule],
   templateUrl: './package-list.component.html',
   styleUrls: ['./package-list.component.scss'],
 })

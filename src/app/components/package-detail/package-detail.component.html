@@ -1,29 +1,36 @@
 <section class="container mx-auto my-10 space-y-2">
-  <h3 class="font-semibold text-2xl">
-    {{ packageDetails?.name }}
-  </h3>
-  <div class="flex items-center gap-2 font-medium text-sm">
-    <div>{{ packageDetails?.["dist-tags"]?.latest ?? "-" }}</div>
-    @if (packageDetails?.license) {
-      <div>&bull; {{ packageDetails?.license ?? "-" }}</div>
-    }
-    @if (
-      packageDetails?.time &&
-      (packageDetails?.["dist-tags"]?.latest || packageDetails?.time?.['modified'])
-    ) {
-      <div>
-        &bull; Published
-        {{
-          fromNow(
-            packageDetails?.time?.[
-              packageDetails?.["dist-tags"]?.latest ?? "modified"
-            ]
-          )
-        }}
-      </div>
-    }
-  </div>
-  <div>{{ packageDetails?.description ?? "-" }}</div>
+  @if (loading) {
+    <div class="skeleton-text">
+      <cds-skeleton-text [lines]="5"></cds-skeleton-text>
+    </div>
+  } @else {
+    <h3 class="font-semibold text-2xl">
+      {{ packageDetails?.name }}
+    </h3>
+    <div class="flex items-center gap-2 font-medium text-sm">
+      <div>{{ packageDetails?.["dist-tags"]?.latest ?? "-" }}</div>
+      @if (packageDetails?.license) {
+        <div>&bull; {{ packageDetails?.license ?? "-" }}</div>
+      }
+      @if (
+        packageDetails?.time &&
+        (packageDetails?.["dist-tags"]?.latest ||
+          packageDetails?.time?.["modified"])
+      ) {
+        <div>
+          &bull; Published
+          {{
+            fromNow(
+              packageDetails?.time?.[
+                packageDetails?.["dist-tags"]?.latest ?? "modified"
+              ]
+            )
+          }}
+        </div>
+      }
+    </div>
+    <div>{{ packageDetails?.description ?? "-" }}</div>
+  }
   <div class="border-0 border-solid border-b-1 border-gray-300">&nbsp;</div>
   <div>
     <div class="flex mt-6 gap-8 justify-between items-stretch w-full">
@@ -34,78 +41,80 @@
         class="flex-1"
       >
         <cds-tab heading="ReadMe">
-          <div class="my-2">
-            @if (packageDetails?.readme) {
-              <markdown> {{ packageDetails?.readme }}</markdown>
-            } @else {
-              <div class="text-center">No Readme content available</div>
-            }
-          </div>
+          @if (loading) {
+            <div class="skeleton-text">
+              <cds-skeleton-text [lines]="5"></cds-skeleton-text>
+            </div>
+          } @else {
+            <div class=" bg-shade-light p-4">
+              @if (packageDetails?.readme) {
+                <markdown> {{ packageDetails?.readme }}</markdown>
+              } @else {
+                <div class="text-center">No Readme content available</div>
+              }
+            </div>
+          }
         </cds-tab>
         <cds-tab heading="Versions">
-          <h6 class="my-2">Current Tags</h6>
+          <div class="p-4 bg-shade-light">
+          <h6 >Current Tags</h6>
 
           <div>Existing version list goes here...</div>
+        </div>
         </cds-tab>
       </cds-tabs>
       <div
         class="border-0 border-solid border-gray-300 border-l-1 pl-4 w-[300px]"
       >
-        <div class="space-y-4">
-          <div>
-            <div class="font-semibold text-gray-700">Home Page</div>
+        @if (loading) {
+          <div class="skeleton-text">
+            <cds-skeleton-text [lines]="10"></cds-skeleton-text>
+          </div>
+        } @else {
+          <div class="space-y-4 bg-shade-light p-4">
             <div>
-              <a cdsLink [href]="packageDetails?.homepage" target="_blank">{{
-                packageDetails?.homepage ?? "-"
-              }}</a>
+              <div class="font-semibold text-gray-700">Home Page</div>
+              <div>
+                <a cdsLink [href]="packageDetails?.homepage" target="_blank">{{
+                  packageDetails?.homepage ?? "-"
+                }}</a>
+              </div>
             </div>
-          </div>
-          <div>
-            <div class="font-semibold text-gray-700">Repository</div>
             <div>
-              <a
-                cdsLink
-                [href]="packageDetails?.repository?.url"
-                target="_blank"
-                >{{ packageDetails?.repository?.url ?? "-" }}</a
-              >
+              <div class="font-semibold text-gray-700">Repository</div>
+              <div>
+                <a
+                  cdsLink
+                  [href]="packageDetails?.repository?.url"
+                  target="_blank"
+                  >{{ packageDetails?.repository?.url ?? "-" }}</a
+                >
+              </div>
             </div>
-          </div>
-          <div>
-            <div class="font-semibold text-gray-700">Bugs</div>
             <div>
-              <a cdsLink [href]="packageDetails?.bugs?.url" target="_blank">{{
-                packageDetails?.bugs?.url ?? "-"
-              }}</a>
+              <div class="font-semibold text-gray-700">Bugs</div>
+              <div>
+                <a cdsLink [href]="packageDetails?.bugs?.url" target="_blank">{{
+                  packageDetails?.bugs?.url ?? "-"
+                }}</a>
+              </div>
             </div>
-          </div>
-          <div>
-            <div class="font-semibold text-gray-700">Author</div>
-            <div>{{ packageDetails?.author?.name ?? "-" }}</div>
-          </div>
-          <div>
-            <div class="font-semibold text-gray-700">Maintainers</div>
+            <div>
+              <div class="font-semibold text-gray-700">Author</div>
+              <div>{{ packageDetails?.author?.name ?? "-" }}</div>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-700">Maintainers</div>
 
-            <div class="gap-4">
-              @for (item of packageDetails?.maintainers; track $index) {
-                <span>{{ item.name }} </span>
-              }
+              <div class="gap-4">
+                @for (item of packageDetails?.maintainers; track $index) {
+                  <span>{{ item.name }} </span>
+                }
+              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   </div>
 </section>
-
-<!-- 
-author: {
-  name: string;
-};
-
-
-keywords: string[];
-versions: any;
-
-maintainers: { email: string; name: string }[];
--->
