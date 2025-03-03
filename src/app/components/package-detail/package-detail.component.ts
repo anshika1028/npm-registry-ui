@@ -4,13 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { MarkdownComponent } from 'ngx-markdown';
 import { NpmRegistryService } from '../../services/npm-registry.service';
 import { PackageDetails } from '../../models/package.model';
-import { TabsModule } from 'carbon-components-angular';
+import { LinkModule, TabsModule } from 'carbon-components-angular';
 import { getTimeAgoString } from '../../misc/utils';
 import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-package-detail',
-  imports: [MarkdownComponent, TabsModule],
+  imports: [MarkdownComponent, TabsModule, LinkModule],
   templateUrl: './package-detail.component.html',
   styleUrls: ['./package-detail.component.scss'],
 })
