@@ -4,20 +4,21 @@
     <div class="flex-1">
       <cds-search
         [placeholder]="'Search packages'"
-        [autocomplete]="'on'"
         [size]="'lg'"
         [value]="searchTerm"
         (valueChange)="onSearch($event)"
         [fluid]="false"
         [expandable]="false"
       ></cds-search>
-      <div class="text-xs mt text-gray-600">
+      <div class="relative">
+      <div class="text-2xs text-gray-600 absolute top-0 left-0">
         {{
           searchTerm.length <= 2
             ? "Type minimum 3 chars to begin search"
             : "&nbsp;"
         }}
       </div>
+    </div>
       </div>
   </div>
     

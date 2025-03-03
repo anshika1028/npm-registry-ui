@@ -1,24 +1,30 @@
-<section class="my-5 mx-10 space-y-2">
-  <h3 class="font-semibold text-xl">
+<section class="container mx-auto my-10 space-y-2">
+  <h3 class="font-semibold text-2xl">
     {{ packageDetails?.name }}
   </h3>
-  <div class="flex items-center gap-2">
+  <div class="flex items-center gap-2 font-medium text-sm">
     <div>{{ packageDetails?.["dist-tags"]?.latest ?? "-" }}</div>
-    &bull;
-    <div>{{ packageDetails?.license ?? "-" }}</div>
-    &bull;
-    <div>
-      Published
-      {{
-        fromNow(
-          packageDetails?.time?.[
-            packageDetails?.["dist-tags"]?.latest ?? "modified"
-          ]
-        )
-      }}
-    </div>
+    @if (packageDetails?.license) {
+      <div>&bull; {{ packageDetails?.license ?? "-" }}</div>
+    }
+    @if (
+      packageDetails?.time &&
+      (packageDetails?.["dist-tags"]?.latest || packageDetails?.time?.['modified'])
+    ) {
+      <div>
+        &bull; Published
+        {{
+          fromNow(
+            packageDetails?.time?.[
+              packageDetails?.["dist-tags"]?.latest ?? "modified"
+            ]
+          )
+        }}
+      </div>
+    }
   </div>
   <div>{{ packageDetails?.description ?? "-" }}</div>
+  <div class="border-0 border-solid border-b-1 border-gray-300">&nbsp;</div>
   <div>
     <div class="flex mt-6 gap-8 justify-between items-stretch w-full">
       <cds-tabs
@@ -43,7 +49,7 @@
         </cds-tab>
       </cds-tabs>
       <div
-        class="border-0 border-solid border-gray-600 border-l-1 borde pl-4 w-[300px]"
+        class="border-0 border-solid border-gray-300 border-l-1 pl-4 w-[300px]"
       >
         <div class="space-y-4">
           <div>
@@ -75,7 +81,7 @@
           </div>
           <div>
             <div class="font-semibold text-gray-700">Author</div>
-            <div>{{ packageDetails?.author ?? "-" }}</div>
+            <div>{{ packageDetails?.author?.name ?? "-" }}</div>
           </div>
           <div>
             <div class="font-semibold text-gray-700">Maintainers</div>
