@@ -17,8 +17,14 @@ export function getTimeAgoString(dateObj?: string | Date) {
   const diffInMin = Math.round(diffInSec / 60);
   const diffInHour = Math.round(diffInMin / 60);
   const diffInDay = Math.round(diffInHour / 24);
+  const diffInMonth = Math.round(diffInDay / 30);
+  const diffInYear = Math.round(diffInMonth / 12);
 
-  if (diffInDay > 0) {
+  if(diffInYear > 0) {
+    return `${diffInYear} year${diffInYear === 1 ? '' : 's'} ago`;
+  } else if (diffInMonth > 0) {
+    return `${diffInMonth} month${diffInMonth === 1 ? '' : 's'} ago`;
+  } else if (diffInDay > 0) {
     return `${diffInDay} day${diffInDay === 1 ? '' : 's'} ago`;
   } else if (diffInHour > 0) {
     return `${diffInHour} hour${diffInHour === 1 ? '' : 's'} ago`;
