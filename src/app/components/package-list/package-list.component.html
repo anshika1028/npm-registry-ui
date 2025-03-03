@@ -43,7 +43,7 @@
 
         <cds-list-column>
           <span class="">
-            <div>{{ packageEntry.package.version }}</div>
+            <div>Latest: <span class="font-semibold">{{ packageEntry.package.version }}</span></div>
             <div class="flex items-center gap-2">
               Updated {{ fromNow(packageEntry.updated) }}
             </div>
@@ -53,7 +53,8 @@
         <cds-list-column>
           <span class="">
             <div class="flex items-center gap-2">
-              <span>{{ packageEntry.downloads.monthly.toLocaleString() }}</span>
+              <Icon cdsIcon="download" size="16"></Icon>
+              <span class="font-semibold">{{ packageEntry.downloads.monthly.toLocaleString() }}</span>
             </div>
           </span>
         </cds-list-column>
