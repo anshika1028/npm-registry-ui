@@ -4,6 +4,7 @@ import { PackageDetails, SearchResult } from '../models/package.model';
 
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ import { catchError } from 'rxjs/operators';
  * Service for interacting with the npm registry API.
  */
 export class NpmRegistryService {
-  private baseUrl = 'https://registry.npmjs.org';
+  private baseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) {}
 
