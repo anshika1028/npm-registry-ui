@@ -1,7 +1,7 @@
-<section class="search">
-  <div class="search-header">
+<section>
+  <div class="shadow-2xl search-header px-8 w-full">
     <app-search (search)="onSearch($event)" class="search-box"></app-search>
-    <hr class="box-shadow" />
+    <hr class=" border-b-1 border-gray-300" />
   </div>
   <div class="my-5 mx-10">
     @if (loading || lastSearchTerm.length > 2) {
@@ -21,10 +21,10 @@
       </div>
     }
     @if (!loading && lastSearchTerm.length <= 2) {
-      <div class="search-result">
-      <div class="search-introduction">
-        <h1>NPM Packages</h1>
-        <h2>
+      <div class="search-introduction my-10 flex items-center justify-center">
+      <div class="text-white text-center max-w-xl space-y-4 py-12">
+        <h1 class="text-2xl font-bold pb-2">NPM Packages</h1>
+        <h2 class="font-bold text-lg">
           Bring the best of open source to you, your team, and your company
         </h2>
         <p>
