@@ -1,10 +1,12 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { PackageDetails, SearchResult } from '../models/package.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { SearchResult } from '../models/package.model';
 
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environment';
+import { PackageDetails } from '../models/packageDetails.model';
+import { GlobalErrorHandler } from './globa-error-handler';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +18,7 @@ import { environment } from '../../environment';
 export class NpmRegistryService {
   private baseUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private errorhandler: GlobalErrorHandler) {}
 
     /**
    * Searches for packages in the npm registry.
@@ -33,7 +35,7 @@ export class NpmRegistryService {
     from: number,
   ): Observable<SearchResult> {
     const url = `${this.baseUrl}/-/v1/search?text=${searchTerm}&size=${size}&from=${from}`;
-    return this.http.get<SearchResult>(url).pipe(catchError(this.handleError));
+    return this.http.get<SearchResult>(url).pipe(catchError(this.errorhandler.createErrorHandler()));
   }
 
   /**
@@ -47,23 +49,7 @@ export class NpmRegistryService {
     const url = `${this.baseUrl}/${packageName}`;
     return this.http
       .get<PackageDetails>(url)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.errorhandler.createErrorHandler()));
   }
 
-  /**
-   * Handles HTTP errors by logging them and returning a user-friendly error message.
-   *
-   * @param error The HttpErrorResponse object representing the error.
-   * @returns An Observable that emits an error message.
-   */
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`,
-      );
-    }
-    return throwError('Something bad happened; please try again later.');
-  }
 }
