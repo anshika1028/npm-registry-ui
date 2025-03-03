@@ -1,9 +1,8 @@
 <section>
-  <div class="shadow-2xl search-header px-8 w-full">
+  <div class="shadow-xl px-10 w-full sticky top-[40px] pt-6 pb-4 overflow-hidden bg-white z-10 ">
     <app-search (search)="onSearch($event)" class="search-box"></app-search>
-    <hr class=" border-b-1 border-gray-300" />
   </div>
-  <div class="my-5 mx-10">
+  <div class="container mx-auto">
     @if (loading || lastSearchTerm.length > 2) {
       <div class="npm--list">
         <app-package-list

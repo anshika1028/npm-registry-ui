@@ -1,7 +1,7 @@
 <section >
-  <div class="search-container">
-    <h5 class="search-npm">NPM</h5>
-    <div class="search-input">
+  <div class="flex items-center gap-6 w-full">
+    <h5><a cdsLink routerLink="/" class="text-2xl font-bold">NPM</a></h5>
+    <div class="flex-1">
       <cds-search
         [placeholder]="'Search packages'"
         [autocomplete]="'on'"
@@ -11,14 +11,15 @@
         [fluid]="false"
         [expandable]="false"
       ></cds-search>
+      <div class="text-xs mt text-gray-600">
+        {{
+          searchTerm.length <= 2
+            ? "Type minimum 3 chars to begin search"
+            : "&nbsp;"
+        }}
+      </div>
       </div>
   </div>
-    <div class="search-hint">
-      {{
-        searchTerm.length <= 2
-          ? "Type minimum 3 chars to begin search"
-          : "&nbsp;"
-      }}
-    </div>
+    
 
 </section>

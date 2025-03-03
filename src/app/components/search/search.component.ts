@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { SearchModule } from 'carbon-components-angular';
+import { LinkModule, SearchModule } from 'carbon-components-angular';
 
 @Component({
   selector: 'app-search',
-  imports: [FormsModule, SearchModule],
+  imports: [FormsModule, SearchModule, LinkModule],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
