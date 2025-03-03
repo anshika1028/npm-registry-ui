@@ -34,12 +34,16 @@ export class PackageDetailComponent implements OnInit {
     this.route.paramMap
       .pipe(
         switchMap((params: ParamMap) => {
-          const name = [];
-          name.push(params.get('name'));
-          if (params.get('subname')) {
-            name.push(params.get('subname'));
+          const names: string[] = [];
+          const name: string = params.get('name')!;
+          const subname: string = params.get('subname')!;
+          if (name) {
+            names.push(name);
           }
-          return this.npmRegistryService.getPackageDetails(name.join('/')!);
+          if (subname) {
+            names.push(subname);
+          }
+          return this.npmRegistryService.getPackageDetails(names.join('/')!);
         }),
       )
       .subscribe({
@@ -55,6 +59,6 @@ export class PackageDetailComponent implements OnInit {
   }
 
   fromNow(date?: string) {
-    return getTimeAgoString(date)  
+    return getTimeAgoString(date);
   }
 }

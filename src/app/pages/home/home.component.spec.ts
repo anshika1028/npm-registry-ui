@@ -16,7 +16,7 @@ describe('HomeComponent', () => {
         PackageListComponent,
         ThemeModule,
         PaginationModule,
-        HomeComponent
+        HomeComponent,
       ],
       providers: [NpmRegistryService],
     }).compileComponents();
@@ -45,7 +45,10 @@ describe('HomeComponent', () => {
     spyOn(app as any, 'searchPackages');
     const event = { term: 'test', errorCallback: jasmine.createSpy() };
     app.onSearch(event);
-    expect((app as any).searchPackages).toHaveBeenCalledWith('test', event.errorCallback);
+    expect((app as any).searchPackages).toHaveBeenCalledWith(
+      'test',
+      event.errorCallback,
+    );
   });
 
   it('should call searchPackages on selectPage', () => {
@@ -55,6 +58,9 @@ describe('HomeComponent', () => {
     app.lastSearchTerm = 'test';
     app.lastSearchErrorCallback = jasmine.createSpy();
     app.selectPage(2);
-    expect((app as any).searchPackages).toHaveBeenCalledWith('test', app.lastSearchErrorCallback);
+    expect((app as any).searchPackages).toHaveBeenCalledWith(
+      'test',
+      app.lastSearchErrorCallback,
+    );
   });
 });
