@@ -95,7 +95,7 @@ The project uses the NPM registry API, specifically the search and package detai
     ```
 
 ## Project Structure
-
+ ```
 src/
 ├── app/
 │ ├── components/
@@ -125,7 +125,7 @@ src/
 ├── assets/
 ├── styles.css
 ├── ...
-
+ ```
 ## Bonus Points
 
 - **Clear Commits:** The commit history is organized and descriptive.
